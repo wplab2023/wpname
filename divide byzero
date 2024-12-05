@@ -1,0 +1,27 @@
+<?php
+$num=10;
+$denom=0;
+try
+{
+	if($denom==0)
+	throw new Exception("Divide by Zero error");
+	$result=$num/$denom;
+	echo "Result of division:". $result."<br>";
+}
+catch(Exception $e)
+{
+	echo "Exception Caught,\n".$e->getMessage()."<br>";
+}
+try{$dateString='20-12-2023';
+$dateFormat='d-m-Y';
+$date=date_create_from_format($dateFormat,$dateString);
+if(!$date || $date->format($dateFormat)!==$dateString)
+{
+	throw new Exception("Invalid date format");
+}
+echo "Date is valid".$dateString;
+}
+catch(Exception $e)
+{
+	echo "Exception Caught,\n".$e->getMessage()."<br>";
+}
