@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Store and Retrieve Image</title>
+</head>
+<body>
+	<form method="POST" enctype="multipart/form-data">
+		Email ID:<input type="email" name="email" id="email" required><br><br>
+		<input type="file" name="image"/><br><br>
+		<input type="submit" style="color:blue" name="upload">
+	</form>
+
+	<?php
+		$conn=mysqli_connect("localhost","root","","studentdbms");
+		if(!$conn)
+		{
+			die("Connection Failed");
+		}
+
+		if(isset($_POST['upload']))
+		{
+			$email=$_POST['email'];
+			$fileName=basename($_FILES["image"]["name"]);
+			
+			$image=$_FILES['image']['tmp_name'];
+			$imgContent=addsLashes(file_get_contents($image));
+			$sql="INSERT INTO img111 VALUES('$email','$fileName','$imgContent')";
+
+
+			if(mysqli_query($conn,$sql)==true)
+				echo "Your Image Uploaded Successfully";
+			else
+				echo"Can Not Insert Image".$conn->error;
+
+			$sqlq="SELECT * FROM img111 where email='$email'";
+			$result=mysqli_query($conn,$sqlq);
+			$row=$result->fetch_array();
+
+			echo '<img src="data:image/jpeg;base64,'.base64_encode($row['imgContent']).'"/>';
+			
+		}
+		
+?>
+</body>
+</html>
