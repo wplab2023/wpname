@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>Form Validation using HTML and javascript</title>
+<script type="text/javascript">
+function validation()
+{
+	var regEmail=/^([a-z A-Z 0-9 .-_])+@([a-z A-Z 0-9])+\.[a-z A-Z {2,3}]+$/;
+	var regPhone=/^[1-9]{1}[0-9]{9}$/;
+	var Email=document.RegForm.Email.value;
+	var Phone=document.RegForm.Telephone.value;
+	var myArray=new Array();
+	for(var i=0;i<document.RegForm.length;i++)
+	{
+		if(document.RegForm.elements[i].value.length==0)
+		{
+			myArray.push(document.RegForm.elements[i].name);
+
+		}
+	}
+	if(myArray.length!=0)
+	alert("Following textboxes are empty:\n"+myArray);
+	else
+	{
+		if(!regEmail.test(Email))
+		{
+		window.alert("please enter a valid email address");
+
+		}
+		if(!regPhone.test(Phone))
+		{
+		alert("please enter valid phone number");
+		}
+		else return;
+	}
+}
+</script>
+</head>
+<body>
+<h1 style="text-align:center">Registration Form</h1>
+<form name="RegForm" onsubmit="validation()" method="post">
+Name:<input type="text" name="Name"/><br/><br/>
+Address:<input type="text" name="Address"/><br/><br/>
+Email Address:<input type="text" name="Email"/><br/><br/>
+Password:<input type="password" name="password"/><br/><br/>
+Gender:<input type="radio" name="gender" value="male"/>Male
+<input type="radio" name="gender" value="Female">Female<br/><br/>
+Telephone:<input type="tel" name="Telephone"/><br/><br/>
+select your course<br>
+<input type="checkbox" id="subject1" name="subject1" value="BCA">BCA<br>
+<input type="checkbox" id="subject2" name="subject2" value="B.TEch>B.Tech<br>
+<input type="checkbox" id="subject3" name="subject3" value="B.com">B.com<br>
+<input type="checkbox" id="subject4" name="subject4 value="BA">BA<br>
+<input type="submit" value="send" name="Submit"/>
+<input type="reset" value="clear" name="Reset"/>
+</form>
+</body>
+</html>
