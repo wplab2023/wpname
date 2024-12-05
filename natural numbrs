@@ -1,0 +1,17 @@
+<html>
+<head>
+<title>Sum of N natural number</title>
+<script type="text/javascript">
+function sumofNnumbers()
+{ var num=window.prompt("enter the value of N");
+  var n=parseInt(num);
+  var sum=(n*(n+1))/2;
+  alert("sum of "+n+" is:"+sum);
+ }
+ </script>
+ </head>
+ <body>
+ <h1>Sum of N natural numbers</h1>
+ <input type="button" value="Find" onclick="sumofNnumbers()">
+ </body>
+ </html>
