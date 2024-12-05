@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Background colour change based  on the days of thwe week</title>
+</head>
+<body>
+<?php
+$days=array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+$today=date("w");
+print("<h3><b>Today is $days[$today].</br>Have a nice day</b></h3>");
+if($today==0)
+{
+	$bgcolour="#FE50CC";
+}
+else if($today==1)
+{
+	$bgcolour="#FFF00E";
+}
+else if($today==2)
+{
+	$bgcolour="#FdFF6f";
+}
+else if($today==3)
+{
+	$bgcolour="#FFE0DD";
+}
+else if($today==4)
+{
+	$bgcolour="#E6EDFF";
+}
+else if($today==5)
+{
+	$bgcolour="#E9FFE6";
+}
+else
+{
+	$bgcolour="#F0F4F1";
+}
+print("<body bgcolor='$bgcolour'>");
+?>
+</body>
+</html>
