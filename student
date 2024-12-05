@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>query</title>
+</head>
+<h1>STUDENT DETAILS</h1>
+<form method="POST" action="StudentDBFY.php">
+Name:<input type="text" name="Name"/></br></br>
+RegNo:<input type="text" name="RegNo" required/></br></br>
+Course:<input type="text" name="Course"/></br></br>
+Address:<input type="text" name="Address"/></br></br>
+<input type="submit" name="SUBMIT" value="Submitform">
+</form>
+<h2>Do you want to make some changes? Fill the below Form</h2>
+<form  method="post" action="StudentDBFY.php"></br><br>
+Enter your Name:<input type="text" name="UUCMS" required></br><br>
+Enter your New Address:<input type="text" name="Updateaddress"></br><br>
+<input type="submit" name="UPDATE" value="SubmitNewValues">
+</form>
+<h2>Do you want to unRegister a student</h2>
+<form method="POST" action="StudentDBFY.php">
+Enter the UUCMS:<input type="text" name="UUCMS">
+<input type="submit" name="Delete" value="DELETE">
+</form>
+</body>
+</html>
