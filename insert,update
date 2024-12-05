@@ -1,0 +1,42 @@
+<?php
+$conn=mysqli_connect("localhost","root","","StudentDBFY");
+if(!$conn)
+{
+	die("Connection Failed");
+}
+if(isset($_POST['SUBMIT']))
+{
+	$Name=$_POST['Name'];
+	$RegNo=$_POST['RegNo'];
+	$Course=$_POST['Course'];
+	$Address=$_POST['Address'];
+
+	$sql="INSERT INTO student VALUES('$Name','$RegNo','$Course','$Address')";
+	$result=mysqli_query($conn,$sql);
+	if($result)
+	echo"Insert query Successful<br>";
+	else
+	echo"Insert unsuccessfull<br>";
+}
+if(isset($_POST['UPDATE']))
+{
+	$UUCMS=$_POST['UUCMS'];
+	$NewAddress=$_POST['Updateaddress'];
+	$update="UPDATE student SET address='$NewAddress'where UUCMS='$UUCms'";
+	$result=mysqli_query($conn,$update);
+	if($result)
+	echo"Update query Successful<br>";
+	else
+	echo"Update unsuccessfull<br>";
+}
+if(isset($_POST['Delete']))
+{
+	$UUCMS=$_POST['UUCMS'];
+	$delete="DELETE FRom student where UUCMS='$UUCMS'";
+	$result=mysqli_query($conn,$delete);
+	if($result)
+	echo"Delete query Successful<br>";
+	else
+	echo"Delete unsuccessfull<br>";
+}
+?>
