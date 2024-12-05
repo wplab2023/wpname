@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>Read and write file</title>
+</head>
+<body>
+<h2>WRITE TO FILE</h2>
+<form action ="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+<textarea name="content" rows="5" cols="40" placeholder="Enter content here"></textarea><br><br>
+<input type="submit" name="write"  style="color:blue;" value="Write">
+</form>
+<h2>READ CONTENT FROM FILE</h2>
+<?php
+$fp=fopen("Data.doc",'w+');
+if($_SERVER['REQUEST_METHOD']=="POST" && isset($_POST['write']))
+{
+	if(flock($fp,LOCK_EX))
+	{
+		$content=$_POST['content'];
+		fwrite($fp,$content);
+		//flock($fp,LOCK_UN);
+		fclose($fp);
+		
+	}
+}
+if(file_exists('Data.doc'))
+{
+	$readContent=file_get_contents('Data.doc');
+	echo "<pre>$readContent";
+}
+else
+echo "file not found";
+?>
+</body>
+</html>
